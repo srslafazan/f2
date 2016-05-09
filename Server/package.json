@@ -1,0 +1,45 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for Forte web application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/server.js",
+    "watch": "babel --watch src -d build",
+    "build": "babel src -d build",
+    "dev": "npm run clean:build && npm run build && nodemon build/server.js",
+    "prod": "npm run clean:build && npm run build && node build/server.js",
+    "test": "mocha --compilers js:babel-core/register",
+    "test:watch": "npm run test -- --watch",
+    "clean": "npm run clean:build && npm clean:modules && npm i",
+    "clean:build": "rm -r ./build",
+    "clean:modules": "rm -r ./node_modules"
+  },
+  "keywords": [],
+  "repository": "https://github.com/srslafazan/f2.git",
+  "author": "Shain Lafazan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-watch": "^2.0.2",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
