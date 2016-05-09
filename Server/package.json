@@ -4,15 +4,14 @@
   "description": "Server for Forte web application.",
   "main": "index.js",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "babel-watch src/server.js",
     "watch": "babel --watch src -d build",
     "build": "babel src -d build",
-    "dev": "npm run clean:build && npm run build && nodemon build/server.js",
     "prod": "npm run clean:build && npm run build && node build/server.js",
     "test": "mocha --compilers js:babel-core/register",
     "test:watch": "npm run test -- --watch",
     "clean": "npm run clean:build && npm clean:modules && npm i",
-    "clean:build": "rm -r ./build",
+    "clean:build": "rm -r ./build/*",
     "clean:modules": "rm -r ./node_modules"
   },
   "keywords": [],

@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build:prod:client && npm run build:server && npm run server",
-    "server": "cd Server && npm start",
+    "server": "cd Server && npm run prod",
     "build:server": "cd Server && npm run build",
-    "client": "cd Client && npm start",
-    "build:client": "cd Client && npm run build",
+    "client": "cd Client && npm run start:clean",
     "build:dev:client": "cd Client && npm run build:prod",
     "build:prod:client": "cd Client && npm run build:prod",
     "test": "npm run test:client && npm run test:server",
