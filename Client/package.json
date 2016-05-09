@@ -4,12 +4,15 @@
   "description": "Client-side Forte web application.",
   "main": "main.js",
   "scripts": {
-    "build": "rm -r ./build && webpack && cp ./src/index.html ./build/index.html",
-    "build:prod": "rm -r ./build && webpack -p && cp ./src/index.html ./build/index.html",
+    "start": "webpack-dev-server --colors --progress --hot",
+    "build:dev": "babel-node tools/build --development",
+    "build:prod": "babel-node tools/build --production",
+    "start:clean": "npm run build:dev && npm start",
+    "clean": "npm run clean:modules && npm run clean:build && npm i",
+    "clean:build": "rm -f ./build/*",
+    "clean:modules": "rm -r ./node_modules",
     "test": "cp -r ./build/bundle.js ./test/build/bundle.js && mocha --compilers js:babel-core/register",
-    "test:watch": "npm test -- --watch",
-    "start": "webpack-dev-server --hot --progress --colors",
-    "clean": "rm -r ./node_modules && rm -r ./build && npm i"
+    "test:watch": "npm test -- --watch"
   },
   "keywords": [],
   "repository": "https://github.com/srslafazan/f2.git",

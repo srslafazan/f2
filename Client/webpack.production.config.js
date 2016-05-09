@@ -1,40 +1,43 @@
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-var PATHS = {
+const PATHS = {
 	SRC: path.join(__dirname, 'src'),
 	BUILD: path.join(__dirname, 'build'),
 };
 
 
-var devConfig = {
-  devtool: 'source-map',
-	entry: [
-		'webpack-dev-server/client?http://localhost:8080',
-		'webpack/hot/only-dev-server',
-		path.join(PATHS.SRC, 'main.js'),
-	],
+const prodConfig = {
+  devtool: 'cheap-module-source-map',
+	entry: path.join(PATHS.SRC, 'main.js'),
 	output: {
     path: PATHS.BUILD,
 		publicPath: '/',
 		filename: 'bundle.js',
 	},
-	// NOTE: only contentBase and port appear to register
-	devServer: {
-		port: 8080,
-		contentBase: PATHS.SRC,
-  },
-	plugins: [],
+	plugins: [
+		// https://webpack.github.io/docs/optimization.html
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		// Search for equal or similar files and deduplicate them in the output
+		// https://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
+		new webpack.optimize.DedupePlugin(),
+
+		// Minimize all JavaScript output of chunks
+		// https://github.com/mishoo/UglifyJS2#compressor-options
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				screw_ie8: true, // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+				warnings: true,
+			},
+		}),
+	],
 	module: {
 		loaders: [
-			// https://github.com/babel/babel-loader#options
-			// https://babeljs.io/docs/usage/options/
 			{
 				test: /\.jsx?$/,
 	      exclude: /(node_modules|bower_components)/,
 	      loaders: ['react-hot', 'babel'],
     	},
-			// CSS Modules https://github.com/css-modules/css-modules
     	{
         test: /\.(less)$/,
 				loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader!less',
@@ -70,4 +73,4 @@ var devConfig = {
 	},
 };
 
-module.exports = devConfig;
+export default prodConfig;
