@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --colors --progress --hot",
-    "build:dev": "babel-node tools/build --development",
-    "build:prod": "babel-node tools/build --production",
+    "build:dev": "babel-node tools/build --development && cp ./src/index.html ./build",
+    "build:prod": "babel-node tools/build --production && cp ./src/index.html ./build",
     "start:clean": "npm run build:dev && npm start",
     "clean": "npm run clean:modules && npm run clean:build && npm i",
     "clean:build": "rm -f ./build/*",
