@@ -6,7 +6,9 @@ import s from './Header.less';
 const Header = React.createClass({
   logo() {
     return (
-      <img className={s.logo} src='./assets/LogoOrange.png'/>
+      <Link to={'/'}>
+        <img className={s.logo} src='../assets/LogoOrange.png'/>
+      </Link>
     );
   },
   nav() {
