@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 // -----------------------------------------------------------------------------
 app.get('*', (req, res, next) => {
 	try {
-		console.log('__dirname is ', __dirname);
 		res.send('index.html');
 	} catch(err) {
 		next(err);

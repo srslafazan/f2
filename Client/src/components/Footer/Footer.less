@@ -1,3 +1,43 @@
-.footer {
-  background-color: teal;
+@value colors: '../../styles/colors.less';
+@value primary, secondary, tertiary, background from colors;
+
+.vertical-align {
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+}
+
+.root {
+  background-color: tertiary;
+  height: 70px;
+}
+
+.list {
+  .vertical-align;
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  li {
+    color: background;
+    display: inline-block;
+    font-weight: 100;
+    font-size: 12px;
+    margin: 0 8px;
+  }
+}
+
+.link {
+  color: background;
+}
+
+.lowerText {
+  .vertical-align;
+  color: background;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 100;
+  opacity: 0.6;
 }

@@ -1,7 +1,11 @@
-import Header from './Header';
 import Footer from './Footer';
+import ForteCarousel from './ForteCarousel';
+import Header from './Header';
+import Hero from './Hero';
 
 export {
-  Header,
   Footer,
+  Header,
+  Hero,
+  ForteCarousel,
 };

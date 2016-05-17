@@ -1,0 +1,29 @@
+@value colors: '../../styles/colors.less';
+@value primary, secondary, tertiary, background from colors;
+
+.vertical-align {
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.root {
+  height: 450px;
+  background: secondary url('../../assets/InstrumentStencilsWhite.png') no-repeat;
+  background-size: cover;
+}
+
+.text {
+  .vertical-align;
+  color: background;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto 0 auto;
+  text-shadow: 2px 2px 2px rgba(60, 60, 60, 0.6);
+}
+
+.buttons {
+  .text;
+}

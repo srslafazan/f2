@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router';
 
-import {Header, Footer} from './components';
-// require('./components/Header/Header.less');
+import {Footer, Header, Hero} from './components';
+import {Home, About, Program, Involve} from './pages';
+
 
 const App = React.createClass({
   render() {
@@ -21,9 +22,10 @@ const App = React.createClass({
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      {/*<IndexRoute component={} />*/}
-      {/*<Route path="about" component={} />*/}
-      {/*<Route path="inbox" component={} />*/}
+      <IndexRoute component={Home} />
+      <Route path="about" component={About} />
+      <Route path="program" component={Program} />
+      <Route path="involve" component={Involve} />
     </Route>
   </Router>
 ), document.getElementById('root'));

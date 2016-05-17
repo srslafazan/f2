@@ -5,14 +5,16 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --colors --progress --hot",
-    "build:dev": "babel-node tools/build --development && cp ./src/index.html ./build",
-    "build:prod": "babel-node tools/build --production && cp ./src/index.html ./build",
+    "build:dev": "babel-node tools/build --development && npm run html",
+    "build:prod": "babel-node tools/build --production && npm run html",
     "start:clean": "npm run build:dev && npm start",
     "clean": "npm run clean:modules && npm run clean:build && npm i",
-    "clean:build": "rm -f ./build/*",
+    "clean:build": "rm ./build/bundle.* index.html",
     "clean:modules": "rm -r ./node_modules",
     "test": "cp -r ./build/bundle.js ./test/build/bundle.js && mocha --compilers js:babel-core/register",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "html": "cp ./src/index.html ./build",
+    "less": "lessc ./src/bundle.less ./build/bundle.css"
   },
   "keywords": [],
   "repository": "https://github.com/srslafazan/f2.git",
